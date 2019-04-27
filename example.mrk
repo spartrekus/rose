@@ -1,12 +1,20 @@
 
 
-!tex
-!begin
+!latex
+\usepackage{epstopdf}
 
+!begin
 Hello World
 
-!fig cat.png
+!section Pythagoras
+
+Just find ... 
+!line  $ a ? $, 
+!line    $b ?$, 
+and 
+!line   $ c  ? $.
+
+!fig pita.eps
 
 !end
-
 
