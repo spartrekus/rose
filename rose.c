@@ -297,7 +297,6 @@ void readfileline( char *fileoutput , char *filesource )
 
 
 
-
                ////////////////////////////
                // !tex 
                ////////
@@ -323,6 +322,7 @@ void readfileline( char *fileoutput , char *filesource )
 
                ////////////////////////////
                // !line 
+               ////////////////////////////
                else if (  ( lline[ 0 ] == '!' ) 
                &&  ( lline[ 1 ] == 'l' ) 
                &&  ( lline[ 2 ] == 'i' ) 
@@ -338,6 +338,64 @@ void readfileline( char *fileoutput , char *filesource )
                }
 
 
+
+               ////////////////////////////
+               // !clr 
+               else if (  ( lline[ 0 ] == '!' ) 
+               &&  ( lline[ 1 ] == 'c' ) 
+               &&  ( lline[ 2 ] == 'l' ) 
+               &&  ( lline[ 3 ] == 'r' ) 
+               )
+               {
+                 fputs( "\\clearpage\n" , target);
+                 fputs( "\n" , target);
+               }
+
+               ////////////////////////////
+               // !nullclr 
+               else if (  ( lline[ 0 ] == '!' ) 
+               &&  ( lline[ 1 ] == 'n' ) 
+               &&  ( lline[ 2 ] == 'u' ) 
+               &&  ( lline[ 3 ] == 'l' ) 
+               &&  ( lline[ 4 ] == 'l' ) 
+               &&  ( lline[ 5 ] == 'c' ) 
+               &&  ( lline[ 6 ] == 'l' ) 
+               &&  ( lline[ 7 ] == 'r' ) 
+               )
+               {
+               }
+
+               ////////////////////////////
+               // !maths 
+               else if (  ( lline[ 0 ] == '!' ) 
+               &&  ( lline[ 1 ] == 'm' ) 
+               &&  ( lline[ 2 ] == 'a' ) 
+               &&  ( lline[ 3 ] == 't' ) 
+               &&  ( lline[ 4 ] == 'h' ) 
+               &&  ( lline[ 5 ] == 's' ) 
+               )
+               {
+                 fputs( "\\usepackage{amsmath}\n" , target);
+                 fputs( "\\usepackage{graphicx}\n" , target);
+                 fputs( "\\usepackage{epstopdf}\n" , target);
+                 fputs( "\n" , target);
+               }
+
+               // !box  
+               else if (  ( lline[ 0 ] == '!' ) 
+               &&  ( lline[ 1 ] == 'b' ) 
+               &&  ( lline[ 2 ] == 'o' ) 
+               &&  ( lline[ 3 ] == 'x' ) 
+               &&  ( lline[ 4 ] == ' ' ) 
+               )
+               {
+  	         fputs( "\\begin{center}", target );
+  	         fputs( "\\boxed{", target );
+ 	         fputs(  strcut( lline, 4+2, strlen( lline )) , target );
+  	         fputs( "}", target );
+  	         fputs( "\\end{center}", target );
+  	         fputs( "\n", target );
+               }
 
 
               else if (  ( lline[ 0 ] == '!' ) 
