@@ -36,7 +36,6 @@
 int tex_item_level = 0;
 
 
-
 /////////////////////////////////
 /////////////////////////////////
 int fexist(char *a_option)
@@ -586,6 +585,10 @@ void makepdf( char *thefile )
               system( " cd ; export DISPLAY=:0 ;  mupdf doc.pdf " );
      }
 }
+
+
+
+
 
 
 
